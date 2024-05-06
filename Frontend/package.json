@@ -17,8 +17,11 @@
   "dependencies": {
     "flowbite": "^2.2.0",
     "pinia": "^2.1.7",
+    "toastify-js": "^1.12.0",
     "vue": "^3.2.25",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vue-toastification": "^2.0.0-rc.5",
+    "vue-toastify": "^2.0.0-alpha.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.4",

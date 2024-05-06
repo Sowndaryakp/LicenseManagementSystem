@@ -8,7 +8,11 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     login(email, password) {
       // Simulate login process
-      if (email === 'user@example.com' && password === 'password') {
+      if (email === 'sow@gmail.com' && password === 'sow') {
+        this.isLoggedIn = true;
+        this.user = { email };
+        console.log('Logged in as:', email); // Log the username
+      } else if (email === 'anju@gmail.com' && password === 'anju') {
         this.isLoggedIn = true;
         this.user = { email };
         console.log('Logged in as:', email); // Log the username

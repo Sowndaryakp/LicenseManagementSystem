@@ -2,11 +2,11 @@
     <div>
       <Navbar />
       <div class="container mx-auto mt-8">
-        <h1 class="text-3xl font-bold mb-4">Dashboard</h1>
+        <h1 class="text-3xl font-bold mb-4">Public Dashboard</h1>
         <div class="flex justify-between">
           <div class="w-1/2">
             <h2 class="text-xl font-bold mb-2">Welcome, {{ userEmail }}</h2>
-            <p>This is your dashboard.</p>
+            <p>This is your public dashboard.</p>
           </div>
         </div>
       </div>
@@ -21,7 +21,7 @@
   import Footer from '../components/Footer.vue';
   
   export default defineComponent({
-    name: 'Dashboard',
+    name: 'PublicDashboard',
     components: {
       Navbar,
       Footer
@@ -30,7 +30,7 @@
       const store = useAuthStore();
   
       return {
-        userEmail: store.user ? store.user.email : '', // 
+        userEmail: store.user ? store.user.email : '',
       };
     }
   });
