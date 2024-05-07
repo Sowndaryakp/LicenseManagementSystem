@@ -2,7 +2,7 @@
   <div class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://i0.wp.com/metrology.news/wp-content/uploads/2022/02/Autodesk-Acquisitions-Enable-Commitment-To-Providing-Full-Gamut-of-Smart-Manufacturing-Solutions.png?resize=800%2C445&ssl=1');">
     <div class="max-w-md w-full bg-deep-cerulean-200 bg-opacity-75 shadow-md rounded-md p-8 text-white">
       <div>
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-white-900">
           Sign in to your account
         </h2>
       </div>
@@ -44,7 +44,7 @@
               type="checkbox"
               class="h-4 w-4 text-deep-cerulean-700 focus:ring-deep-cerulean-800 border-gray-300 rounded"
             >
-            <label for="remember-me" class="ml-2 block text-sm text-gray-900">
+            <label for="remember-me" class="ml-2 block text-sm text-white-900">
               Remember me
             </label>
           </div>

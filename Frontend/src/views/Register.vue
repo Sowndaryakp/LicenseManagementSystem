@@ -2,7 +2,7 @@
   <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8" style="background-color:#bce9fb ;">
     <div class="max-w-md w-full bg-white bg-opacity-75 shadow-md rounded-md p-8" :style="{ backgroundColor: 'rgba(225, 244, 253, 0.8)' }">
       <div>
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-white-900">
           Register
         </h2>
       </div>

@@ -1,6 +1,6 @@
 <template>
-    <footer class="bg-gray-800 p-4 mt-auto">
-      <div class="container mx-auto">
+    <footer class="bg-deep-cerulean-700 p-4 mt-auto">
+      <div class="container mx-auto flex flex-col items-center">
         <span class="text-white">© 2024 Your App Name. All rights reserved.</span>
       </div>
     </footer>
