@@ -115,22 +115,41 @@ const toggleLogin = () => {
 
 const register = () => {
   isRegistering.value = true;
-  console.log("Email:", email.value);
-  console.log("Password:", password.value);
-  console.log("Company:", company.value);
-  console.log("Username:", username.value);
+  
+  const queryParams = new URLSearchParams({
+    username: username.value,
+    password: password.value,
+    company: company.value,
+    email: email.value
+  });
 
-  // Simulating registration process, you can use your registration logic here.
-  // Once registered, redirect the user to login page.
-  setTimeout(() => {
+  fetch(`http://172.18.101.47:1234/SMW/users/?${queryParams}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  .then(response => response.json())
+  .then(data => {
     isRegistering.value = false;
     Toastify({
-      text: 'Registered Successfully! Please login to continue.',
+      text: data.message,
       backgroundColor: "linear-gradient(to right, #4caf50, #56ab2f)",
     }).showToast();
     router.push('/user/login');
-  }, 1000);
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+    isRegistering.value = false;
+    Toastify({
+      text: 'An error occurred. Please try again later.',
+      backgroundColor: "linear-gradient(to right, #f44336, #d32f2f)",
+    }).showToast();
+  });
 }
+
+
+
 </script>
 
 <style>

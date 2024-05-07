@@ -9,16 +9,16 @@
       <form class="mt-8 space-y-6" @submit.prevent="login">
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
-            <label for="email-address" class="sr-only">Email address</label>
+            <label for="username" class="sr-only">Username</label>
             <input
-              id="email-address"
-              v-model="email"
-              name="email"
-              type="email"
-              autocomplete="email"
+              id="username"
+              v-model="username"
+              name="username"
+              type="text"
+              autocomplete="username"
               required
               class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-              placeholder="Email address"
+              placeholder="Username"
             >
           </div>
           <div>
@@ -97,7 +97,7 @@ import { useAuthStore } from '../store';
 import { useRouter } from 'vue-router';
 import Toastify from 'toastify-js';
 
-let email = ref('');
+let username = ref('');
 let password = ref('');
 let isLoggingIn = ref(false);
 const store = useAuthStore();
@@ -109,43 +109,55 @@ const toggleRegister = () => {
 
 const login = () => {
   isLoggingIn.value = true;
-  console.log("Email:", email.value);
-  console.log("Password:", password.value);
+  
+  const formData = new FormData();
+  formData.append('username', username.value);
+  formData.append('password', password.value);
 
-  if (email.value === 'sow@gmail.com' && password.value === 'sow') {
-    store.login(email.value, password.value);
-    router.push('/admindashboard');
-    Toastify({
-      text: 'Logined Successfully',
-      duration: 3000,
-      newWindow: true,
-      close: true,
-      gravity: "bottom", // `top` or `bottom`
-      position: "center", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      backgroundColor: "green",
-    }).showToast();
-  } else if (email.value === 'anju@gmail.com' && password.value === 'anju') {
-    store.login(email.value, password.value);
-    router.push('/publicdashboard');
-    Toastify({
-      text: 'Logined Successfully',
-      duration: 3000,
-      newWindow: true,
-      close: true,
-      gravity: "bottom", // `top` or `bottom`
-      position: "center", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      backgroundColor: "green",
-    }).showToast();
-    
-  } else {
+  fetch('http://172.18.101.47:1234/SMW/login', {
+    method: 'POST',
+    body: formData,
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    isLoggingIn.value = false;
+    if (data.access_token) {
+      store.login(username.value, password.value);
+      if (data.is_admin) {
+        router.push('/admindashboard');
+      } else {
+        router.push('/publicdashboard');
+      }
+      Toastify({
+        text: data.message || 'Logged in successfully',
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "bottom", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        backgroundColor: "green",
+      }).showToast();
+    } else {
+      Toastify({
+        text: data.detail[0].msg, // Update error message to show the server's message
+        backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+      }).showToast();
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
     isLoggingIn.value = false;
     Toastify({
-      text: 'Invalid email or password',
-      backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)",
+      text: 'An error occurred. Please try again later.',
+      backgroundColor: "linear-gradient(to right, #f44336, #d32f2f)",
     }).showToast();
-  }
+  });
 }
 </script>
 
