@@ -7,16 +7,20 @@ import { useAuthStore } from '../store';
 
 const routes = [
   {
-    path: '/user',
-    component: () => import('../App.vue'),
+    path: '/',
+    redirect: '/user/login' // Redirect to the login page by default
+  },
+  {
+    path: '/user', // Base path for child routes
+    component: () => import('../App.vue'), // Base component for child routes
     children: [
       {
-        path: 'Login',
+        path: 'login', // Child route for login
         name: 'Login',
         component: Login
       },
       {
-        path: 'register', 
+        path: 'register', // Child route for register
         name: 'Register',
         component: Register
       }

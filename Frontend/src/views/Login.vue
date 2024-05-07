@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
+  <div class="min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: url('https://i0.wp.com/metrology.news/wp-content/uploads/2022/02/Autodesk-Acquisitions-Enable-Commitment-To-Providing-Full-Gamut-of-Smart-Manufacturing-Solutions.png?resize=800%2C445&ssl=1');">
+    <div class="max-w-md w-full bg-deep-cerulean-200 bg-opacity-75 shadow-md rounded-md p-8 text-white">
       <div>
         <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
           Sign in to your account
@@ -17,7 +17,7 @@
               type="email"
               autocomplete="email"
               required
-              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="Email address"
             >
           </div>
@@ -30,7 +30,7 @@
               type="password"
               autocomplete="current-password"
               required
-              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              class="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mt-4"
               placeholder="Password"
             >
           </div>
@@ -42,7 +42,7 @@
               id="remember-me"
               name="remember-me"
               type="checkbox"
-              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              class="h-4 w-4 text-deep-cerulean-700 focus:ring-deep-cerulean-800 border-gray-300 rounded"
             >
             <label for="remember-me" class="ml-2 block text-sm text-gray-900">
               Remember me
@@ -50,7 +50,7 @@
           </div>
 
           <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+            <a href="#" class="font-medium text-deep-cerulean-600 hover:text-deep-cerulean-500">
               Forgot your password?
             </a>
           </div>
@@ -60,11 +60,11 @@
           <button
             type="submit"
             :disabled="isLoggingIn"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-deep-cerulean-600 hover:bg-deep-cerulean-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-deep-cerulean-500 mt-4"
           >
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               <svg
-                class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                class="h-5 w-5 text-deep-cerulean-500 group-hover:text-deep-cerulean-400"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -82,7 +82,7 @@
         </div>
 
         <div class="mt-6 flex justify-center items-center">
-          <button @click = ToggleRegister() class="text-sm text-indigo-600 hover:text-indigo-500">
+          <button @click="toggleRegister" class="text-sm text-deep-cerulean-800 hover:text-deep-cerulean-500">
             Don't have an account? Register here
           </button>
         </div>
@@ -103,9 +103,9 @@ let isLoggingIn = ref(false);
 const store = useAuthStore();
 const router = useRouter();
 
-const ToggleRegister=() => {
-    router.push('/user/register');
-  };
+const toggleRegister = () => {
+  router.push('/user/register');
+};
 
 const login = () => {
   isLoggingIn.value = true;
@@ -123,7 +123,7 @@ const login = () => {
       gravity: "bottom", // `top` or `bottom`
       position: "center", // `left`, `center` or `right`
       stopOnFocus: true, // Prevents dismissing of toast on hover
-          backgroundColor: "green",
+      backgroundColor: "green",
     }).showToast();
   } else if (email.value === 'anju@gmail.com' && password.value === 'anju') {
     store.login(email.value, password.value);
@@ -136,7 +136,7 @@ const login = () => {
       gravity: "bottom", // `top` or `bottom`
       position: "center", // `left`, `center` or `right`
       stopOnFocus: true, // Prevents dismissing of toast on hover
-          backgroundColor: "green",
+      backgroundColor: "green",
     }).showToast();
     
   } else {
