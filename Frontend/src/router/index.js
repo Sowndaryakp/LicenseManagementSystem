@@ -27,17 +27,30 @@ const routes = [
     ]
   },
   {
-    path: '/admindashboard',
-    name: 'AdminDashboard',
-    component: AdminDashboard,
-    meta: { requiresAuth: true, isAdmin: true }
+    path: '/admin', // Base path for child routes
+    component: () => import('../App.vue'), // Base component for child routes
+    children: [
+      {
+        path: 'admindashboard', // Child route for login
+        name: 'AdminDashboard',
+        component: AdminDashboard,
+        // meta: { requiresAuth: true, is_admin: true }
+      },
+    ]
   },
   {
-    path: '/publicdashboard',
-    name: 'PublicDashboard',
-    component: PublicDashboard,
-    meta: { requiresAuth: true }
-  }
+    path: '/public', // Base path for child routes
+    component: () => import('../App.vue'), // Base component for child routes
+    children: [
+      {
+        path: 'publicdashboard', // Child route for login
+        name: 'PublicDashboard',
+        component: PublicDashboard,
+        // meta: { requiresAuth: true, is_admin: true }
+      },
+    ]
+  },
+  
 ];
 
 const router = createRouter({

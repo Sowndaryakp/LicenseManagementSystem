@@ -115,7 +115,7 @@ const login = () => {
   if (username.value === 'admin' && password.value === 'password') {
     isLoggingIn.value = false;
     store.login(username.value, password.value);
-    router.push('/admindashboard');
+    router.push('/admin/admindashboard');
     Toastify({
       text: 'Logged in successfully as admin',
       duration: 3000,
@@ -148,20 +148,24 @@ const login = () => {
     if (data.access_token) {
       store.login(username.value, password.value);
       if (data.is_admin) {
-        router.push('/admindashboard');
+        console.log("addddminnnn")
+        router.push('/admin/admindashboard');
+        console.log("commmingggggggggggg")
       } else {
-        router.push('/publicdashboard');
+        console.log("publicccccccc")
+        router.push('/public/publicdashboard');
+        console.log("commmingggggggggggg")
       }
-      Toastify({
-        text: data.message || 'Logged in successfully',
-        duration: 3000,
-        newWindow: true,
-        close: true,
-        gravity: "bottom", // `top` or `bottom`
-        position: "center", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        backgroundColor: "green",
-      }).showToast();
+      // Toastify({
+      //   text: data.message || 'Logged in successfully',
+      //   duration: 3000,
+      //   newWindow: true,
+      //   close: true,
+      //   gravity: "bottom", // `top` or `bottom`
+      //   position: "center", // `left`, `center` or `right`
+      //   stopOnFocus: true, // Prevents dismissing of toast on hover
+      //   backgroundColor: "green",
+      // }).showToast();
     } else {
       Toastify({
         text: data.detail[0].msg, // Update error message to show the server's message
