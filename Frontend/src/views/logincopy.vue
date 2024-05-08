@@ -119,7 +119,7 @@ const login = () => {
     password: hashedPassword // Send hashed password to backend
   };
 
-  fetch('http://172.18.101.47:1234/SMW/login', {
+  fetch('http://172.18.7.76:5656/SMW/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

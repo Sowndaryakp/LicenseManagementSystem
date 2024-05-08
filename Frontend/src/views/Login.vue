@@ -101,6 +101,7 @@ let username = ref('');
 let password = ref('');
 let isLoggingIn = ref(false);
 const store = useAuthStore();
+
 const router = useRouter();
 
 const toggleRegister = () => {
@@ -109,12 +110,30 @@ const toggleRegister = () => {
 
 const login = () => {
   isLoggingIn.value = true;
-  
+
+  // Check default admin login
+  if (username.value === 'admin' && password.value === 'password') {
+    isLoggingIn.value = false;
+    store.login(username.value, password.value);
+    router.push('/admindashboard');
+    Toastify({
+      text: 'Logged in successfully as admin',
+      duration: 3000,
+      newWindow: true,
+      close: true,
+      gravity: "bottom", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      backgroundColor: "green",
+    }).showToast();
+    return;
+  }
+
   const formData = new FormData();
   formData.append('username', username.value);
   formData.append('password', password.value);
 
-  fetch('http://172.18.101.47:1234/SMW/login', {
+  fetch('http://172.18.7.76:5656/SMW/login', {
     method: 'POST',
     body: formData,
   })

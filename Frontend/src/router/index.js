@@ -48,7 +48,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const store = useAuthStore();
   const isLoggedIn = store.isLoggedIn;
-  const isAdmin = store.user && store.user.email === 'sow@gmail.com';
+  const isAdmin = store.user && store.user.username === 'admin'; // Changed email to username
 
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (!isLoggedIn) {

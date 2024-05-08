@@ -123,7 +123,7 @@ const register = () => {
     email: email.value
   });
 
-  fetch(`http://172.18.101.47:1234/SMW/users/?${queryParams}`, {
+  fetch(`http://172.18.7.76:5656/SMW/users/?${queryParams}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
